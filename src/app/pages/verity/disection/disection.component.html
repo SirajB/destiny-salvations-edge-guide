@@ -1,0 +1,67 @@
+<div class="container">
+  <h1>Shape Swapping Calculator</h1>
+
+  <!-- Inside Shapes -->
+  <h3>Inside Shapes</h3>
+  <div>
+    <label for="shape1">Shape 1:</label>
+    <select [(ngModel)]="shape1" id="shape1" (ngModelChange)="onInsideShapeChange()">
+      <option value="" disabled>Select Shape</option>
+      <option *ngFor="let option of availableInsideShapes" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="shape2">Shape 2:</label>
+    <select [(ngModel)]="shape2" id="shape2" (ngModelChange)="onInsideShapeChange()">
+      <option value="" disabled>Select Shape</option>
+      <option *ngFor="let option of availableInsideShapes" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="shape3">Shape 3:</label>
+    <select [(ngModel)]="shape3" id="shape3" (ngModelChange)="onInsideShapeChange()">
+      <option value="" disabled>Select Shape</option>
+      <option *ngFor="let option of availableInsideShapes" [value]="option">{{ option }}</option>
+    </select>
+  </div>
+
+  <!-- Outside Shapes -->
+  <h3>Outside Shapes</h3>
+  <div>
+    <label for="outsideShape1">Outside Shape 1:</label>
+    <select [(ngModel)]="outsideShape1" id="outsideShape1" (ngModelChange)="onOutsideShapeChange()">
+      <option value="" disabled>Select Outside Shape</option>
+      <option *ngFor="let shape of allOutsideShapes" [value]="shape.name">{{ shape.name }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="outsideShape2">Outside Shape 2:</label>
+    <select [(ngModel)]="outsideShape2" id="outsideShape2" (ngModelChange)="onOutsideShapeChange()">
+      <option value="" disabled>Select Outside Shape</option>
+      <option *ngFor="let shape of allOutsideShapes" [value]="shape.name">{{ shape.name }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="outsideShape3">Outside Shape 3:</label>
+    <select [(ngModel)]="outsideShape3" id="outsideShape3" (ngModelChange)="onOutsideShapeChange()">
+      <option value="" disabled>Select Outside Shape</option>
+      <option *ngFor="let shape of allOutsideShapes" [value]="shape.name">{{ shape.name }}</option>
+    </select>
+  </div>
+
+  <!-- Calculate Button -->
+  <button (click)="calculateTrades()">Calculate Trades</button>
+
+  <!-- Validation Error -->
+  <div *ngIf="validationError" class="error">
+    <p>{{ validationError }}</p>
+  </div>
+
+  <!-- Transactions Output -->
+  <div *ngIf="transactions.length > 0">
+    <h3>Generated Transactions</h3>
+    <ul>
+      <li *ngFor="let transaction of transactions">{{ transaction }}</li>
+    </ul>
+  </div>
+</div>
